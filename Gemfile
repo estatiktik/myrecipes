@@ -33,7 +33,7 @@ gem 'bcrypt', '3.1.7'
 gem 'fog', '1.23.0'
 
 group :development, :test do
-  #gem 'sqlite3'
+  gem 'sqlite3'
   gem 'pry'
 end
 

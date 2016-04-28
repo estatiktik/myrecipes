@@ -32,24 +32,15 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bcrypt', '3.1.7'
 gem 'fog', '1.23.0'
 
-group :test, :production do
-  gem 'pg'
-end
-
-group :development do
+group :development, :test do
   gem 'sqlite3'
+  gem 'pry'
 end
 
-
-#group :development, :test do
-#  gem 'sqlite3'
-#  gem 'pry'
-#end
-
-#group :production do
-#  gem 'pg'
-#  gem 'rails_12factor'
-#end
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

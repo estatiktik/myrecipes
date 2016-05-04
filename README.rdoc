@@ -1,0 +1,30 @@
+Things need:
+
+1. migration to create reviews table, body, type = text field, two foreign keys. reference chef_id, recipe id
+
+2. You'll need to build the Review model
+
+3. You'll need to create tests for the spec, add valiradions to the review model.
+
+4. Build the associations, has_many and belongs_to
+
+5. Test out associations in rails console
+
+- recipe.reviews
+- chef.reviews
+
+6. create routes
+7. authenticated chefs can create reviews, before_action, require_user
+8. need associate a chef_id and recipe_id
+9. use existing code if possible.
+
+
+for testing reviews:
+
+
+body: text
+
+body must be present
+body must be between 10 and 150 characters
+chef_id must be present
+recipe_id must be present

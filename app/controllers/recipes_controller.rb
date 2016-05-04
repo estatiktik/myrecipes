@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
   end
   
   def show
-
+    
   end
   
   def new
@@ -42,6 +42,7 @@ class RecipesController < ApplicationController
       render :edit
     end
   end
+  
   
   def like
     like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
@@ -88,4 +89,5 @@ class RecipesController < ApplicationController
       redirect_to recipes_path unless current_user.admin?
     end
   
+ 
 end

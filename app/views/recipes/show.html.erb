@@ -38,7 +38,31 @@
         <% end %>
       </div>
     </div>
+    
+    
+    <% if @recipe.reviews.any? %>
+    <div class="col-md-8">
+      
+    
+      <h3>Reviews: </h3>
+  
+      
+    <% @recipe.reviews.each do |review| %>
+      
+      <%= link_to review.chef.chefname, chef_path(review.chef) %>:
+      <%= review.body %> <br>
+      
+    <% end %>
+    </div>
+  
+    <% end %>
+    
   </div>
 </div>
 
+<br>
+
 <h5><%= link_to 'Return to Recipes Lising', recipes_path, class: "btn btn-warning btn-small" %></h5>
+
+
+<h5><%= link_to 'Submit a Review', new_review_path, class: "btn btn-warning btn-small" %></h5>

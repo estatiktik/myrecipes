@@ -29,4 +29,9 @@ Rails.application.routes.draw do
   resources :styles, only: [:new, :create, :show]
   resources :ingredients, only: [:new, :create, :show]
   
+  resources :reviews, except: [:new]
+  
+  get 'recipes/:id/reviews/new', to: 'reviews#new', as: 'new_review'
+  
+  
 end

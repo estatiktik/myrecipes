@@ -1,0 +1,23 @@
+<% @recipe = Recipe.find(params[:id]) %>
+
+<%= render 'shared/page_title', title: "Submit a Review for: " + @recipe.name%>
+
+
+
+
+
+<div class = "row">
+    <div class = "well col-md-8 col-md-offset-2">
+      <%= form_for @review do |f| %>
+        <%= f.label :Review %>
+        <%= f.text_field :body %>
+        
+        <%= hidden_field_tag 'recipe', @recipe.id %>
+      
+        <%= f.submit 'Submit Review', class: "btn btn-success" %>
+      
+      <% end %>
+
+
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
  
- 
+
   def new
     @review = Review.new
   end
@@ -15,7 +15,10 @@ class ReviewsController < ApplicationController
       flash[:success] = @review.chef.chefname + " Your review was submited successfully! " 
       redirect_to recipe_path(@review.recipe)
     else
-      render :new
+      @review.errors.full_messages.each do |msg|
+        flash[:danger] = msg
+      end
+      redirect_to new_review_path(@review.recipe)
     end
    end
   
@@ -26,7 +29,7 @@ class ReviewsController < ApplicationController
    end
    
    def set_recipe
-      
+
    end
  
 end

@@ -9,12 +9,12 @@ def setup
 end
 
   test "review should be vaild" do
-    assert @review.vaild?
+    assert @review.valid?
   end
   
   test "chef_id shoule be present" do
     @review.chef_id = nil
-    assert_not @recipe.valid?
+    assert_not @review.valid?
   end
   
   test "body must be present" do

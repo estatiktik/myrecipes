@@ -8,7 +8,7 @@ class RecipeTest < ActiveSupport::TestCase
   end
   
   test "recipe should be vaild" do
-    assert @recipe.vaild?
+    assert @recipe.valid?
   end
   
   test "chef_id should be present" do

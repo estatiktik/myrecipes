@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
   
+  post '/recipes/:id', to: 'recipes#delete_review', as: 'delete_review'
+  
   resources :chefs, except: [:new, :destroy]
   
   get '/register', to: 'chefs#new'

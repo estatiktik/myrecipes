@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
  
+  before_action :require_user_review, only: [:new]
+  before_action :require_different_user, only: [:new]
 
+  
   def new
     @review = Review.new
   end
@@ -22,6 +25,11 @@ class ReviewsController < ApplicationController
     end
    end
   
+  def show
+  
+  end
+   
+  
   private
    
    def review_params
@@ -31,5 +39,20 @@ class ReviewsController < ApplicationController
    def set_recipe
 
    end
+   
+   def require_user_review
+      if !logged_in?
+        flash[:danger] = "You must be logged in to perform that action."
+        redirect_to recipe_path(params[:id])
+      end
+   end
+   
+   def require_different_user
+     @recipe = Recipe.find(params[:id])
+      if current_user == @recipe.chef
+        flash[:danger] = "You can't review your own recipe."
+        redirect_to recipe_path(params[:id])
+      end
+    end
  
 end

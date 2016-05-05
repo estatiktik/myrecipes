@@ -45,13 +45,16 @@
       
     
       <h3>Reviews: </h3>
-  
-      
+
     <% @recipe.reviews.each do |review| %>
       
       <%= link_to gravatar_for(review.chef, size: 20), chef_path(review.chef) %>
       <%= link_to review.chef.chefname, chef_path(review.chef) %>:
-      <%= review.body %> <br>
+      <%= review.body %>
+       <% if logged_in? and (review.chef == current_user || current_user.admin?) %>
+        <%= link_to "[Delete Review]", recipe_path(:review_id => review.id), method: :delete_review, data: { confirm: "Are you sure?" } %>
+      <% end %>
+      <br>
       
     <% end %>
     </div>
@@ -65,6 +68,6 @@
 
 <h5><%= link_to 'Return to Recipes Lising', recipes_path, class: "btn btn-warning btn-small" %></h5>
 
-<% if logged_in? %>
+<% if logged_in? and @recipe.chef != current_user %>
 <h5><%= link_to 'Submit a Review', new_review_path, class: "btn btn-warning btn-small" %></h5>
 <% end %>
